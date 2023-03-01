@@ -5,4 +5,4 @@ const SongSchema = new mongoose.Schema({
     album: {type: String, required: true},
     genre: {type: String, required: true},    
 })
-const Song = mongoose.model('Song', SongSchema);
+module.exports = Song = mongoose.model('Song', SongSchema);
