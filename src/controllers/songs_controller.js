@@ -1,7 +1,6 @@
 const Song = require('../models/song');
 
 const addnewSong = async (req, res) => {
-    console.log("ADD NEW SONG ", req.body)
     const { title, artist, album, genre } = req.body;
     if(!title || !artist || !album || !genre) {
         return res.status(400).json({ error: 'Please fill out all fields' });
@@ -13,7 +12,7 @@ const addnewSong = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
-const getAllSongs = async (req, res) => {
+const getAllSongs = async (req, res) => {    //get all Songs
     try {
         const songs = await Song.find();
         res.status(200).json({ songs });
@@ -22,7 +21,7 @@ const getAllSongs = async (req, res) => {
     }
 }
 //edit song
-const editSong = async (req, res) => {
+const editSong = async (req, res) => {    //edit one Song by id
     const { title, album, artist, genre, id } = req.body;
     
     console.log("EDIT SONG: ", req.body)
@@ -43,19 +42,19 @@ const editSong = async (req, res) => {
   };
   
 
-  const deleteSong = async (req, res) => {
+  const deleteSong = async (req, res) => {    //delete one Song by id
     const { id } = req.body;
     try {
-      const song = await Song.findOne({ id: id });
-      if (!song) {
+      const result = await Song.deleteOne({ id: id });
+      if (result.deletedCount === 0) {
         return res.status(404).json({ error: 'Song not found' });
-      }
-      await song.remove();
+      } 
       res.json({ message: 'Song deleted successfully' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   };
+  
   
   
 
