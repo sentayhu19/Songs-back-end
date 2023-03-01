@@ -1,8 +1,10 @@
 const { Router } = require("express");
 const router = Router();
-const { addnewSong, editSong, deleteSong }= require('../controllers/songs_controller');
+const { addnewSong, editSong, deleteSong, getAllSongs }= require('../controllers/songs_controller');
 router.post('/addnewsong', addnewSong)
-router.put('/editsong/:title/:album/:artist/:genre', editSong)
-router.delete('/deletesong/:title/:album/:artist/:genre', deleteSong)
+router.put('/editsong', editSong)
+router.delete('/deletesong', deleteSong)
+router.get('/getsongs', getAllSongs)
+ 
 
 module.exports = router;

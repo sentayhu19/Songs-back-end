@@ -23,19 +23,18 @@ const getAllSongs = async (req, res) => {
 }
 //edit song
 const editSong = async (req, res) => {
-    const { title, album } = req.body;
-    const songTitle = req.params.title;
-    const songAlbum = req.params.album;
-    const songArtist = req.params.artist;
-    const songGenre = req.params.genre;
+    const { title, album, artist, genre, id } = req.body;
     
+    console.log("EDIT SONG: ", req.body)
     try {
-      const song = await Song.findOne({ title: songTitle, album: songAlbum, artist: songArtist, genre: songGenre });
+      const song = await Song.findOne({id: id });
       if (!song) {
         return res.status(404).json({ error: 'Song not found' });
       }
       song.title = title;
       song.album = album;
+      song.artist = artist;
+      song.genre = genre;
       await song.save();
       res.json(song);
     } catch (error) {
@@ -45,13 +44,9 @@ const editSong = async (req, res) => {
   
 
   const deleteSong = async (req, res) => {
-    const songTitle = req.params.title;
-    const songAlbum = req.params.album;
-    const songArtist = req.params.artist;
-    const songGenre = req.params.genre;
-    
+    const { id } = req.body;
     try {
-      const song = await Song.findOne({ title: songTitle, album: songAlbum, artist: songArtist, genre: songGenre });
+      const song = await Song.findOne({ id: id });
       if (!song) {
         return res.status(404).json({ error: 'Song not found' });
       }
