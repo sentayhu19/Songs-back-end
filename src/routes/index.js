@@ -6,7 +6,7 @@ router.post('/addnewsong', addnewSong)
 router.put('/editsong', editSong)
 router.delete('/deletesong', deleteSong)
 router.get('/getsongs', getAllSongs)
-router.get('/gestatus',getTotalCounts)
+router.get('/gestatus',getTotalCounts) 
  
 
 module.exports = router;  

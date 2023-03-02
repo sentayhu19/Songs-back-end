@@ -1,6 +1,7 @@
 const Song = require('../models/song');
 
 const addnewSong = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
     const { title, artist, album, genre } = req.body;
     if(!title || !artist || !album || !genre) {
         return res.status(400).json({ error: 'Please fill out all fields' });
@@ -13,6 +14,7 @@ const addnewSong = async (req, res) => {
     }
 }
 const getAllSongs = async (req, res) => {    //get all Songs
+  res.setHeader('Access-Control-Allow-Origin', '*');
     try {
         const songs = await Song.find();
         res.status(200).json({ songs });
@@ -22,6 +24,7 @@ const getAllSongs = async (req, res) => {    //get all Songs
 }
 //edit song
 const editSong = async (req, res) => {    //edit one Song by id
+  res.setHeader('Access-Control-Allow-Origin', '*');
     const { title, album, artist, genre, id } = req.body;
     
     console.log("EDIT SONG: ", req.body)
@@ -43,6 +46,7 @@ const editSong = async (req, res) => {    //edit one Song by id
   
 
   const deleteSong = async (req, res) => {    //delete one Song by id
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const { id } = req.body;
     try {
       const result = await Song.deleteOne({ id: id });

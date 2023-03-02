@@ -1,5 +1,6 @@
 const Song = require('../models/song');
 const getTotalCounts = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
     try {
       const totalCounts = await Song.aggregate([
         {
