@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const { config } = require('dotenv');
+config()
+
 const { dbConfig } = require('../constants/index');
 const connectDb = () => {
 mongoose.connect(dbConfig, { useNewUrlParser: true, useUnifiedTopology: true, writeConcern: { w: 'majority' } })
