@@ -3,6 +3,7 @@ const { config } = require('dotenv');
 config()
 
 const { dbConfig } = require('../constants/index');
+console.log("DB CONFIG URL: ", dbConfig)
 const connectDb = () => {
 mongoose.connect(dbConfig, { useNewUrlParser: true, useUnifiedTopology: true, writeConcern: { w: 'majority' } })
   .then(() => console.log('Connected to MongoDB Atlas'))
