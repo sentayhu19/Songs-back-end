@@ -47,8 +47,10 @@ const editSong = async (req, res) => {    //edit one Song by id
 
   const deleteSong = async (req, res) => {    //delete one Song by id
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     const { id } = req.body;
-    try {
+    try { 
       const result = await Song.deleteOne({ id: id });
       if (result.deletedCount === 0) {
         return res.status(404).json({ error: 'Song not found' });
