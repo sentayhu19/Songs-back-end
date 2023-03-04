@@ -40,4 +40,7 @@ To install and run this API, follow these steps:
     Install the dependencies using npm install.
     Start the API using npm start.
 
-The API w
+The API will be running on http://localhost:3000.
+## Conclusion
+
+Thank you for using the Songs Management API. If you have any questions or feedback, please feel free to contact me or create an issue and if you like the project give me a star.
