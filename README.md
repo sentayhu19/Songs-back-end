@@ -24,7 +24,7 @@ Get status information
 This route retrieves the total number of songs, artists, genre, and the number of songs by statistics data in the application's database. The endpoint for this route is /gestatus and it accepts a GET request. The getTotalCounts function handles this request by querying the database for the relevant counts and returning the result as a response.
 Technologies Used
 
-This API is built using the following technologies:
+This Back-end is built using the following technologies:
 
   -  Node.js
  -    Express
